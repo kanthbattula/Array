@@ -1,0 +1,45 @@
+public class Spiral_Array {
+	public void printArraySpiral(int[][] twoDArray) {
+		// checking if given array is empty
+		if (twoDArray.length == 0)
+			return;
+
+		int top = 0;
+		int down = twoDArray.length - 1;
+		int left = 0;
+		int right = twoDArray[0].length - 1;
+
+		// Idea is to trim outer layer of the 2D Array and repeat the same for
+		// the remaining 2D Array till there are no elements.
+		while (true) {
+
+			for (int j = left; j <= right; ++j)
+				System.out.print(twoDArray[top][j] + " ");
+			top++;
+			if (top > down || left > right)
+				break;
+			for (int i = top; i <= down; ++i)
+				System.out.print(twoDArray[i][right] + " ");
+			right--;
+			if (top > down || left > right)
+				break;
+			for (int j = right; j >= left; --j)
+				System.out.print(twoDArray[down][j] + " ");
+			down--;
+			if (top > down || left > right)
+				break;
+			for (int i = down; i >= top; --i)
+				System.out.print(twoDArray[i][left] + " ");
+			left++;
+			if (top > down || left > right)
+				break;
+		}
+	}
+
+	public static void main(String args[]) {
+		// Declaring and initializing a two-dimensional array
+		int TwoDArray[][] = { { 1, 2, 3, 4, 5 }, { 6, 7, 8, 9, 10 },
+				{ 11, 12, 13, 14, 15 } };
+		new Spiral_Array().printArraySpiral(TwoDArray);
+	}
+}
